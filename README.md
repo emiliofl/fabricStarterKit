@@ -11,7 +11,7 @@ Este guia consiste nas seguintes partes:
 ## Breve Visão Geral do Starter Kit
 ![devNetwork-overview](img/devNetwork-overview.png "devNetwork-overview")
 
-Os slides da apresentação podem ser encontrados[aqui](https://docs.google.com/presentation/d/1Maqwoc0X94_GD73R2wzIeUIunM6_n48T9yGbWeIYUjI/edit?usp=sharing).
+Os slides da apresentação podem ser encontrados [aqui](https://docs.google.com/presentation/d/1Maqwoc0X94_GD73R2wzIeUIunM6_n48T9yGbWeIYUjI/edit?usp=sharing).
 
 ## Part 1 - Preparação
 Estas etapas descrevem uma instalação HLF 2.2.x installation  
