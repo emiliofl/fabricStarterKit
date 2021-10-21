@@ -1,7 +1,7 @@
-# Part 4 - Set Up a react Frontend Application
-The creation of a frontend application is a bit out of scope of this guide. Nevertheless, there is a simple reference implementation included. 
+# Part 4 - Configurar um aplicativo de front-end react
+A criação de um aplicativo de front-end está um pouco fora do escopo deste guia. No entanto, há uma implementação de referência simples incluída
 
-You can find these files in the expressjs public folder. You are welcome to replace these with your own.
+Você pode encontrar esses arquivos na pasta pública expressjs. Você está convidado a substituí-los pelos seus.
 
 [Index](../README.md#fabric-Developer-starter-kit) | [Previous](./readme.md) 
 
