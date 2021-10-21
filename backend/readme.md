@@ -1,48 +1,48 @@
-# Part 3 - Set Up and run a Client Application
-The client application is based on Node.js. We use an expressjs REST API to interact with the ledger and provide a public react frontend.
+# Parte 3 - Configurar e executar um aplicativo cliente
+O aplicativo cliente é baseado em Node.js. Usamos uma API REST expressjs para interagir com o razão e fornecer uma interface de reação pública.
 
-## Install Node.js requirements
-First install the required node_modules.
+## Requisitos de instalação do Node.js.
+Primeiro instale os node_modules necessários.
 ```bash
-# make sure you are in the backend folder
+# certifique-se de que está na pasta de backend
 pwd
 # > /root/fabric/fabricStarterKit/backend
 
-# have a look into the package.json file if you are interested
+# dê uma olhada no arquivo package.json se você estiver interessado
 npm install
 ```
 
-## Add a User to the Wallet
-The client application needs a user to interact with the ledger. We can use **User1@org1.example.com** which was created during the boot process. 
+## Adicionar um usuário à Wallet
+O aplicativo cliente precisa de um usuário para interagir com o razão. Podemos usar **User1@org1.example.com** que foi criado durante o processo de inicialização.
 
-The second step is to add this user to the clients local filesystem wallet. We can do that with the following command.
+A segunda etapa é adicionar esse usuário à carteira do sistema de arquivos local do cliente. Podemos fazer isso com o seguinte comando.
 
 ```bash
 node cli/addToWallet.js
 # > done
 
-# check the wallet
+# verifique a wallet
 tree wallet
 
-# you should see the following output
+# você deve ver a seguinte saída
 wallet
 └── User1@org1.example.com.id
 
-# feel free to inspect that file
+# sinta-se à vontade para inspecionar esse arquivo
 cat wallet/User1@org1.example.com.id | jq .
 ```
 
-## Install global helper if needed
-We can install some global and common helper tools.
+## Instale o global helper, se necessário
+Podemos instalar algumas ferramentas auxiliares globais e comuns.
 
 ```bash
 npm install nodemon mocha -g
 ```
 
-## Start REST API
-We need another tmux panel.
+## Iniciar API REST
+Precisamos de outro painel tmux.
 
->**Create a new panel horizontally**<br> 
+>**** Crie um novo painel horizontalmente ****<br> 
 CTRL + b " (double-quots)
 
 Start expressjs.
@@ -50,14 +50,14 @@ Start expressjs.
 nodemon start index.js
 ```
 
-## Test with cli commands
-We need another tmux panel.
->**Create a new panel horizontally**<br> 
+## Teste com comandos CLI
+Precisamos de outro painel tmux.
+>**Crie um novo painel horizontalmente**<br> 
 CTRL + b " (double-quots)
 
 ```bash
-# call a specific test with mocha
-# possible values ['api','setData','getData','delAsset','getAllAssets','getHistory']
+# chame um teste específico com mocha
+# valores possíveis ['api','setData','getData','delAsset','getAllAssets','getHistory']
 
 mocha -g "getAllAssets" cli/commands.js
 ```
