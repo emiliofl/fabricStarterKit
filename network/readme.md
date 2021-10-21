@@ -1,7 +1,7 @@
-## Part 2 - Using the devNetwork
-After we've successfully installed step 1, we can try the starter kit.
+## Parte 2 - Usando o devNetwork
+Depois de instalarmos com sucesso a etapa 1, podemos experimentar o kit inicial.
 
-Please assume the following folder structure, which should already exist.
+Assumindo que a seguinte estrutura de pastas, que já deve existir.
 ```bash
 root@jsday:~/fabric 
 
@@ -10,20 +10,20 @@ tree -L 1
 ├── fabric-samples
 └── fabricStarterKit
 ```
-Let's start the development network.
+Vamos começar a rede de desenvolvimento.
 
 ```bash
-# switch into the cloned folder
+# mudar para a pasta clonada
 cd fabricStarterKit
 
-# start a new tmux terminal
+# inicie um novo terminal tmux
 tmux new -s dev
 
-# enable scrolling
+# habilitar rolagem
 CTRL + b :set -g mouse on
 
 # --------------------
-# in terminal 1
+# no terminal 1
 # --------------------
 ./network/devNetwork.sh up
 
@@ -31,59 +31,59 @@ CTRL + b :set -g mouse on
 #./network/devNetwork.sh up -s (http://your-url:5984/_utils/#login)
 
 # --------------------
-# in terminal 2
+# no terminal 2
 # --------------------
 
-# start the chaincode in Node.js
+# inicie o chaincode em Node.js
 cd chaincode/nodejs/starter
 
-# install node_modules (for the first time)
+# instalar node_modules (pela primeira vez)
 npm install 
 
-# start the chaincode by hand
+# inicie o chaincode manualmente
 CORE_CHAINCODE_LOGLEVEL=debug CORE_PEER_TLS_ENABLED=false CORE_CHAINCODE_ID_NAME=mycc:1.0 ./node_modules/.bin/fabric-chaincode-node start --peer.address 127.0.0.1:7052
 
 # --------------------
-# in terminal 3
+# no terminal 3
 # --------------------
 cd $HOME/fabric/fabricStarterKit
 
-# set proper environment variables
+# definir variáveis ​​de ambiente adequadas
 source ./network/startup.sh
 
-## test the chaincode with  CLI commands during the chaincode development
-# create or update an asset
+## teste o chaincode com comandos CLI durante o desenvolvimento do chaincode
+# criar ou atualizar um ativo
 peer chaincode invoke -o 127.0.0.1:7050 -C ch1 -n mycc -c '{"Args":["starter:set","{\"no\":\"a1\", \"desc\":\"Product number 1\",\"amount\":10, \"price\":\"500\"}"]}'
 
-# query the world state of an asset
+# consultar o estado mundial de um ativo
 peer chaincode query -C ch1 -n mycc -c '{"Args":["starter:get","a1"]}' | jq .
 
-# query the history of an asset
+# consultar o histórico de um ativo
 peer chaincode query -C ch1 -n mycc -c '{"Args":["starter:getHistory","a1"]}' | jq .
 
-# query all assets
+# consultar todos os ativos
 peer chaincode query -C ch1 -n mycc -c '{"Args":["starter:getAllAssets"]}' | jq .
 
-# delete an asset
+# deletar um ativo
 peer chaincode invoke -o 127.0.0.1:7050 -C ch1 -n mycc -c '{"Args":["starter:delete","a1"]}'
 ```
 
->Note: When you're completing part 3 of this guide, please do not stop the network.
+> Observação: ao concluir a parte 3 deste guia, não interrompa a rede.
 
-## Stopping the Development Network
-Please note if you stop the network, the script will remove all blockchain related data and crypto-material. You will receive a clean system for the next start.
+## Parando a Rede de Desenvolvimento
+Observe que, se você parar a rede, o script removerá todos os dados e materiais criptográficos relacionados ao blockchain. Você receberá um sistema limpo para a próxima partida.
 
 ```bash
-# in terminal 1
+# no terminal 1
 ./network/devNetwork.sh down
 ```
 
-Alternatively, you can leave the development network and let it run in the background to continue your work later.
+Como alternativa, você pode deixar a rede de desenvolvimento e deixá-la rodar em segundo plano para continuar seu trabalho mais tarde.
 
 ```bash
 CTRL + b d
 ``` 
 
-Now we are ready and switch to the client application.
+Agora estamos prontos e mudamos para o aplicativo cliente.
 
 [Previous](../README.md#fabric-Developer-starter-kit) | [Next](../backend/readme.md)
